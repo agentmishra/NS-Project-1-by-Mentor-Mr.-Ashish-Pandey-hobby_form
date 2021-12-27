@@ -10,9 +10,14 @@ function addHobby() {
         document.getElementById('hobby-list').innerHTML ='';
         let i=0;
         while(i<hobby.length){
-            serialNumber=i+1;
-            document.getElementById('hobby-list').innerHTML += "<li onclick='this.remove(); removeHobby(this.id);' id="+serialNumber+">" + serialNumber +" - "+ hobby[i] +" <span><i class='fa fa-trash-o'></i></li></span>";
-            i++;
+            if(hobby[i]===''){
+                i++;
+            }
+            else{
+                serialNumber=i+1;
+                document.getElementById('hobby-list').innerHTML += "<li>" + serialNumber +" - "+ hobby[i] +" <span onclick='this.remove(); removeHobby(this.id);' id="+serialNumber+"><i class='fa fa-trash-o'></i></span></li>";
+                i++;
+            }
         }
         document.getElementById('hobby-input').value = '';
         
@@ -22,5 +27,17 @@ function addHobby() {
 function removeHobby(id) {
     let removeHobbyNumber = id-1;
     hobby.splice(removeHobbyNumber, 1, '');
+    document.getElementById('hobby-list').innerHTML ='';
+        let i=0;
+        while(i<hobby.length){
+            if(hobby[i]===''){
+                i++;
+            }
+            else{
+                serialNumber=i+1;
+                document.getElementById('hobby-list').innerHTML += "<li>" + serialNumber +" - "+ hobby[i] +" <span onclick='this.remove(); removeHobby(this.id);' id="+serialNumber+"><i class='fa fa-trash-o'></i></span></li>";
+                i++;
+            }
+        }
     
 }
