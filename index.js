@@ -14,11 +14,7 @@ function addHobby() {
     }
 }
 
-function removeHobby(elem) {
-    let removeHobbyNumber = elem.parentNode.id-1;
-    hobby.splice(removeHobbyNumber, 1, '');
-    displayLi();
-}
+
 
 function displayLi() {
     let serialNumber = 0;
@@ -30,10 +26,16 @@ function displayLi() {
         }
         else{
             serialNumber=i+1;
-            hobbyList.innerHTML += "<li id=li"+serialNumber+"><p  id=pLabel"+serialNumber+">" + serialNumber +"<label> - "+ hobby[i] +" <button onclick='myToggle("+serialNumber+")'><i class='fa fa-pencil-square-o'> </i></button> <button onclick='removeHobby(this)'><i class='fa fa-trash-o'></i></button></p><p  id=pInput"+serialNumber+" style='display:none;'>" + serialNumber +" - <input type='text' placeholder='Enter the Edited Value' value="+hobby[i]+" id=input"+serialNumber+"> <button onclick='editThis("+serialNumber+")'><i class='fa fa-check'> </i></button> <button onclick='myToggle("+serialNumber+")'><i class='fa fa-close'></i></button></li>";
+            hobbyList.innerHTML += "<li id=li"+serialNumber+"><p  id=pLabel"+serialNumber+">" + serialNumber +"<label> - "+ hobby[i] +" <button onclick='myToggle("+serialNumber+")'><i class='fa fa-pencil-square-o'> </i></button> <button onclick='removeHobby("+serialNumber+")'><i class='fa fa-trash-o'></i></button></p><p  id=pInput"+serialNumber+" style='display:none;'>" + serialNumber +" - <input type='text' placeholder='Enter the Edited Value' value="+hobby[i]+" id=input"+serialNumber+"> <button onclick='editThis("+serialNumber+")'><i class='fa fa-check'> </i></button> <button onclick='myToggle("+serialNumber+")'><i class='fa fa-close'></i></button></li>";
             i++;
         }
     }
+}
+
+function removeHobby(slId) {
+    let removeHobbyNumber = slId-1;
+    hobby.splice(removeHobbyNumber, 1, '');
+    displayLi();
 }
 
 function editThis(liId) {
